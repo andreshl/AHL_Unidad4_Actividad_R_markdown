@@ -3,6 +3,8 @@ title: "Unidad 3"
 author: "Andrés Hernandez lara"
 date: "11 de junio de 2025"
 output: 
+  github_document:
+      toc: true
   html_document:
     toc: true
     toc_depth: 3
