@@ -3,28 +3,28 @@ Unidad 3
 Andrés Hernandez lara
 11 de junio de 2025
 
-- [Carga de datos](#carga-de-datos)
-- [1. Agrupa los incidentes por mes y
-  alcaldía,](#1-agrupa-los-incidentes-por-mes-y-alcaldía)
-- [y calcula el número promedio de incidentes por
-  categoría.](#y-calcula-el-número-promedio-de-incidentes-por-categoría)
-- [2. Identifica el día de la semana con más incidentes y determinar el
-  total de llamadas para ese
-  día.](#2-identifica-el-día-de-la-semana-con-más-incidentes-y-determinar-el-total-de-llamadas-para-ese-día)
-- [3. Crea un análisis temporal que muestre la distribución de
+- [1 Carga de datos](#1-carga-de-datos)
+- [2 1. Agrupa los incidentes por mes y
+  alcaldía,](#2-1-agrupa-los-incidentes-por-mes-y-alcaldía)
+- [3 y calcula el número promedio de incidentes por
+  categoría.](#3-y-calcula-el-número-promedio-de-incidentes-por-categoría)
+- [4 2. Identifica el día de la semana con más incidentes y determinar
+  el total de llamadas para ese
+  día.](#4-2-identifica-el-día-de-la-semana-con-más-incidentes-y-determinar-el-total-de-llamadas-para-ese-día)
+- [5 3. Crea un análisis temporal que muestre la distribución de
   incidentes por hora del día para las categorías “DELITO”, “EMERGENCIA”
   y “URGENCIA MÉDICA”. Utiliza gráficos adecuados para el
-  análisis.](#3-crea-un-análisis-temporal-que-muestre-la-distribución-de-incidentes-por-hora-del-día-para-las-categorías-delito-emergencia-y-urgencia-médica-utiliza-gráficos-adecuados-para-el-análisis)
-  - [Todos los años](#todos-los-años)
-- [4. Calcula el tiempo promedio entre la creación y cierre del
+  análisis.](#5-3-crea-un-análisis-temporal-que-muestre-la-distribución-de-incidentes-por-hora-del-día-para-las-categorías-delito-emergencia-y-urgencia-médica-utiliza-gráficos-adecuados-para-el-análisis)
+  - [5.1 Todos los años](#51-todos-los-años)
+- [6 4. Calcula el tiempo promedio entre la creación y cierre del
   incidente (usa fecha_creacion y fecha_cierre). Así mismo, determinar
   el tiempo mínimo y
-  máximo.](#4-calcula-el-tiempo-promedio-entre-la-creación-y-cierre-del-incidente-usa-fecha_creacion-y-fecha_cierre-así-mismo-determinar-el-tiempo-mínimo-y-máximo)
-- [5. Determinar el porcentaje de llamadas que fueron clasificadas como
-  “Falsa
-  Alarma”.](#5-determinar-el-porcentaje-de-llamadas-que-fueron-clasificadas-como-falsa-alarma)
+  máximo.](#6-4-calcula-el-tiempo-promedio-entre-la-creación-y-cierre-del-incidente-usa-fecha_creacion-y-fecha_cierre-así-mismo-determinar-el-tiempo-mínimo-y-máximo)
+- [7 5. Determinar el porcentaje de llamadas que fueron clasificadas
+  como “Falsa
+  Alarma”.](#7-5-determinar-el-porcentaje-de-llamadas-que-fueron-clasificadas-como-falsa-alarma)
 
-# Carga de datos
+# 1 Carga de datos
 
 ``` r
 library(readr)
@@ -111,9 +111,9 @@ df
     ## #   alcaldia_cierre <chr>, colonia_cierre <chr>, manzana <chr>, latitud <dbl>,
     ## #   longitud <dbl>
 
-# 1. Agrupa los incidentes por mes y alcaldía,
+# 2 1. Agrupa los incidentes por mes y alcaldía,
 
-# y calcula el número promedio de incidentes por categoría.
+# 3 y calcula el número promedio de incidentes por categoría.
 
 ``` r
 library(dplyr)
@@ -301,7 +301,7 @@ ggplot(categorias_anio, aes(x = categoria_incidente_c4, y = n, fill = factor(ani
 
 ![](unidad3_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
-# 2. Identifica el día de la semana con más incidentes y determinar el total de llamadas para ese día.
+# 4 2. Identifica el día de la semana con más incidentes y determinar el total de llamadas para ese día.
 
 ``` r
 library(dplyr)
@@ -385,9 +385,9 @@ ggplot(df_dias, aes(x = dia_semana, y = n, color = factor(anio_creacion), group 
 
 ![](unidad3_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
-# 3. Crea un análisis temporal que muestre la distribución de incidentes por hora del día para las categorías “DELITO”, “EMERGENCIA” y “URGENCIA MÉDICA”. Utiliza gráficos adecuados para el análisis.
+# 5 3. Crea un análisis temporal que muestre la distribución de incidentes por hora del día para las categorías “DELITO”, “EMERGENCIA” y “URGENCIA MÉDICA”. Utiliza gráficos adecuados para el análisis.
 
-## Todos los años
+## 5.1 Todos los años
 
 ``` r
 library(readr)
@@ -423,7 +423,7 @@ ggplot(conteo, aes(x = clas_con_f_alarma, y = factor(hora), fill = incidentes)) 
 
 ![](unidad3_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
-# 4. Calcula el tiempo promedio entre la creación y cierre del incidente (usa fecha_creacion y fecha_cierre). Así mismo, determinar el tiempo mínimo y máximo.
+# 6 4. Calcula el tiempo promedio entre la creación y cierre del incidente (usa fecha_creacion y fecha_cierre). Así mismo, determinar el tiempo mínimo y máximo.
 
 ``` r
 library(readr)
@@ -556,7 +556,7 @@ ggplot(df_por_anio, aes(x = reorder(categoria_incidente_c4, promedio_duracion_mi
 
 ![](unidad3_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
-# 5. Determinar el porcentaje de llamadas que fueron clasificadas como “Falsa Alarma”.
+# 7 5. Determinar el porcentaje de llamadas que fueron clasificadas como “Falsa Alarma”.
 
 ``` r
 # Calcular porcentaje de "Falsa Alarma"
